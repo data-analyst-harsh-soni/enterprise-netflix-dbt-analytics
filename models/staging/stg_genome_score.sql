@@ -1,5 +1,5 @@
 WITH raw_genome_scores AS (
-  SELECT * FROM NETFLIX.RAW.RAW_GENOME_SCORES
+  SELECT * FROM {{ source('netflix_raw', 'RAW_GENOME_SCORES') }}
 )
 
 SELECT
@@ -7,3 +7,4 @@ SELECT
   tagId AS tag_id,
   relevance
 FROM raw_genome_scores
+

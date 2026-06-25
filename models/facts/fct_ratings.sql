@@ -1,22 +1,20 @@
-{{
-  config(
-    materialized = 'incremental',
-    on_schema_change='fail'
-  )
-}}
-
-WITH src_ratings AS (
-  SELECT * FROM {{ ref('stg_ratings') }}
-)
+{{ config(materialized='incremental') }}
 
 SELECT
-  user_id,
-  movie_id,
-  rating,
-  rating_timestamp
-FROM fct_ratings
-WHERE rating IS NOT NULL
+    user_id,
+    movie_id,
+    rating,
+    rating_timestamp
+FROM {{ ref('stg_ratings') }}
 
 {% if is_incremental() %}
-  AND rating_timestamp > (SELECT MAX(rating_timestamp) FROM {{ this }})
+WHERE rating_timestamp >
+(
+    SELECT COALESCE(
+        MAX(rating_timestamp),
+        TO_TIMESTAMP_LTZ('1970-01-01 00:00:00')
+    )
+    FROM {{ this }}
+)
 {% endif %}
+

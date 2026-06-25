@@ -1,0 +1,91 @@
+version: 2
+
+sources:
+  - name: netflix_raw
+    description: "MovieLens Raw Dataset"
+
+    database: NETFLIX
+    schema: RAW
+    loader: Snowflake COPY INTO
+
+    tables:
+
+      - name: RAW_MOVIES
+        description: "Movies Dataset"
+
+        columns:
+          - name: MOVIEID
+            data_tests:
+              - unique
+              - not_null
+
+          - name: TITLE
+            data_tests:
+              - not_null
+
+          - name: GENRES
+
+      - name: RAW_RATINGS
+        description: "Movie Ratings"
+
+        columns:
+          - name: USERID
+            data_tests:
+              - not_null
+
+          - name: MOVIEID
+            data_tests:
+              - not_null
+
+              - relationships:
+                  arguments:
+                    to: source('netflix_raw','RAW_MOVIES')
+                    field: MOVIEID
+
+          - name: RATING
+            data_tests:
+              - not_null
+
+          - name: TIMESTAMP
+            data_tests:
+              - not_null
+
+      - name: RAW_TAGS
+        description: "Movie Tags"
+
+        columns:
+          - name: USERID
+
+          - name: MOVIEID
+
+          - name: TAG
+
+          - name: TIMESTAMP
+
+      - name: RAW_LINKS
+        description: "Movie Links"
+
+        columns:
+          - name: MOVIEID
+
+          - name: IMDBID
+
+          - name: TMDBID
+
+      - name: RAW_GENOME_TAGS
+        description: "Genome Tags"
+
+        columns:
+          - name: TAGID
+
+          - name: TAG
+
+      - name: RAW_GENOME_SCORES
+        description: "Genome Scores"
+
+        columns:
+          - name: MOVIEID
+
+          - name: TAGID
+
+          - name: RELEVANCE

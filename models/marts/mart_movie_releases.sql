@@ -16,3 +16,4 @@ SELECT
 FROM fct_ratings f
 LEFT JOIN seed_dates d
 ON f.movie_id = d.movie_id
+

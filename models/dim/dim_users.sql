@@ -12,3 +12,4 @@ FROM (
   UNION
   SELECT * FROM tags
 )
+

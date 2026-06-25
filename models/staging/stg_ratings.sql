@@ -1,7 +1,8 @@
 {{ config(materialized = 'table') }}
 
 WITH raw_ratings AS (
-  SELECT * FROM NETFLIX.RAW.RAW_RATINGS
+  SELECT *
+   FROM {{ source('netflix_raw', 'RAW_RATINGS') }}
 )
 
 SELECT
@@ -10,3 +11,4 @@ SELECT
   rating,
   TO_TIMESTAMP_LTZ(timestamp) AS rating_timestamp
 FROM raw_ratings
+

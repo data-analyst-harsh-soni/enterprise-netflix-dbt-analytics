@@ -7,3 +7,4 @@ SELECT
     SPLIT(genres, '|') AS genre_array,
     genres
 FROM stg_movies
+

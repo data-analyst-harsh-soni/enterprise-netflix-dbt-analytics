@@ -23,3 +23,4 @@ SELECT
 FROM movies m
 LEFT JOIN scores s ON m.movie_id = s.movie_id
 LEFT JOIN tags t ON t.tag_id = s.tag_id
+

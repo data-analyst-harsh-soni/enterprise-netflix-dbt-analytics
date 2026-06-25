@@ -1,7 +1,7 @@
 {{ config(materialized = 'table') }}
 
 WITH raw_tags AS (
-  SELECT * FROM NETFLIX.RAW.RAW_TAGS
+  SELECT * FROM {{ source('netflix_raw', 'RAW_TAGS') }}
 )
 
 SELECT
@@ -10,3 +10,4 @@ SELECT
   tag,
   TO_TIMESTAMP_LTZ(timestamp) AS tag_timestamp
 FROM raw_tags
+
