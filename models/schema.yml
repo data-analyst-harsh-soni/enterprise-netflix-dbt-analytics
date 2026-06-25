@@ -1,0 +1,76 @@
+models:
+  - name: dim_movies
+    description: Dimension table for cleansed movie metadata
+    columns:
+      - name: movie_id
+        description: Primary key of the movie
+        tests:
+          # - unique
+          - not_null
+      - name: movie_title
+        description: Standardized movie title
+        tests:
+          - not_null
+      - name: genre_array
+        description: List of genres in array format
+      - name: genres
+        description: Raw genre string from source
+
+  - name: dim_users
+    description: Dimension table of unique users from both ratings and tags
+    columns:
+      - name: user_id
+        description: Unique user identifier
+        tests:
+          # - unique
+          - not_null
+
+  - name: dim_genome_tags
+    description: Dimension table of genome tag labels
+    columns:
+      - name: tag_id
+        description: Unique tag ID
+        tests:
+          - not_null
+          # - unique
+      - name: tag_name
+        description: Cleaned, human-readable tag name
+        tests:
+          - not_null
+
+  - name: fct_ratings
+    description: Fact table of user ratings for movies
+    columns:
+      - name: user_id
+        description: Foreign key to dim_users
+        tests:
+          - not_null
+      - name: movie_id
+        description: Foreign key to dim_movies
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_movies')
+              field: movie_id
+      - name: rating
+        description: User's rating for a movie
+        tests:
+          - not_null
+      - name: rating_timestamp
+        description: Unix timestamp when the rating was made
+
+  - name: fct_genome_scores
+    description: Fact table of relevance scores per movie and tag
+    columns:
+      - name: movie_id
+        description: Foreign key to dim_movies
+        tests:
+          - not_null
+      - name: tag_id
+        description: Foreign key to dim_genome_tags
+        tests:
+          - not_null
+      - name: relevance_score
+        description: Relevance score (0 to 1) for tag's association with movie
+        tests:
+          - not_null
