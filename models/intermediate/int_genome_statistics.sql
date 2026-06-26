@@ -14,11 +14,11 @@ SELECT
 
     COUNT(*) AS total_movies,
 
-    ROUND(AVG(relevance_score),4) AS average_relevance,
+    ROUND(AVG(relevance),4) AS average_relevance,
 
-    MIN(relevance_score) AS minimum_relevance,
+    MIN(relevance) AS minimum_relevance,
 
-    MAX(relevance_score) AS maximum_relevance
+    MAX(relevance) AS maximum_relevance
 
 FROM {{ ref('fct_genome_scores') }}
 

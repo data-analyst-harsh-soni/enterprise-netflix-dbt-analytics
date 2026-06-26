@@ -1,0 +1,251 @@
+version: 2
+
+models:
+
+  #######################################################################
+  # Enterprise Ratings Fact
+  #######################################################################
+
+  - name: fct_ratings
+    description: "Enterprise ratings fact table."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - fact
+        - analytics
+        - ratings
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        domain: "Movie Analytics"
+        source_system: "MovieLens"
+        criticality: "High"
+
+    columns:
+
+      - name: rating_sk
+        description: "Surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_sk
+        description: "Movie dimension key."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_movies')
+              field: movie_sk
+
+      - name: user_sk
+        description: "User dimension key."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_sk
+
+      - name: date_sk
+        description: "Date dimension key."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_sk
+
+      - name: movie_id
+        description: "Business movie id."
+
+      - name: user_id
+        description: "Business user id."
+
+      - name: rating
+        description: "Movie rating."
+
+      - name: rating_timestamp
+        description: "Rating timestamp."
+
+      - name: rating_year
+        description: "Rating year."
+
+      - name: rating_month
+        description: "Rating month."
+
+      - name: rating_day
+        description: "Rating day."
+
+      - name: is_weekend_rating
+        description: "Weekend indicator."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null
+
+  #######################################################################
+  # Enterprise Genome Scores Fact
+  #######################################################################
+
+  - name: fct_genome_scores
+    description: "Enterprise genome relevance fact."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - fact
+        - analytics
+        - genome
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        domain: "Movie Analytics"
+        source_system: "MovieLens"
+        criticality: "High"
+
+    columns:
+
+      - name: genome_score_sk
+        description: "Surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_sk
+        description: "Movie foreign key."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_movies')
+              field: movie_sk
+
+      - name: tag_sk
+        description: "Genome tag foreign key."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_genome_tags')
+              field: tag_sk
+
+      - name: movie_id
+        description: "Business movie identifier."
+
+      - name: tag_id
+        description: "Business genome tag identifier."
+
+      - name: relevance
+        description: "Genome relevance score."
+        tests:
+          - not_null
+
+      - name: relevance_bucket
+        description: "High / Medium / Low bucket."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null
+
+  #######################################################################
+  # Enterprise Movie Activity Fact
+  #######################################################################
+
+  - name: fct_movie_activity
+    description: "Enterprise movie activity fact."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - fact
+        - analytics
+        - activity
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        domain: "Movie Analytics"
+        source_system: "MovieLens"
+        criticality: "High"
+
+    columns:
+
+      - name: movie_activity_sk
+        description: "Surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_sk
+        description: "Movie foreign key."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_movies')
+              field: movie_sk
+
+      - name: movie_id
+        description: "Business movie identifier."
+
+      - name: total_ratings
+        description: "Total ratings received."
+
+      - name: average_rating
+        description: "Average movie rating."
+
+      - name: minimum_rating
+        description: "Minimum rating."
+
+      - name: maximum_rating
+        description: "Maximum rating."
+
+      - name: last_rating_timestamp
+        description: "Latest rating timestamp."
+
+      - name: total_genome_tags
+        description: "Total genome tags."
+
+      - name: average_relevance_score
+        description: "Average genome relevance score."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null
