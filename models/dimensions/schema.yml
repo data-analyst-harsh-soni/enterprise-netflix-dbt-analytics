@@ -142,3 +142,60 @@ models:
         description: "Source system."
         tests:
           - not_null
+
+  #######################################################################
+  # Enterprise Genome Tag Dimension
+  #######################################################################
+
+  - name: dim_genome_tags
+    description: "Enterprise genome tag dimension."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - dimension
+        - analytics
+        - genome
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        domain: "Movie Analytics"
+        source_system: "MovieLens"
+        criticality: "High"
+
+    columns:
+
+      - name: tag_sk
+        description: "Surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: tag_id
+        description: "Natural business key."
+        tests:
+          - unique
+          - not_null
+
+      - name: tag
+        description: "Genome tag description."
+        tests:
+          - not_null
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Last refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null

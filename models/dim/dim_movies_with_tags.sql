@@ -18,7 +18,7 @@ SELECT
     m.movie_id,
     m.title,
     m.genres,
-    t.tag_name,
+    t.tag,
     s.relevance_score
 FROM movies m
 LEFT JOIN scores s ON m.movie_id = s.movie_id
