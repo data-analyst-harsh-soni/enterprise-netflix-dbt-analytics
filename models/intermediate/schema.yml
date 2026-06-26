@@ -1,0 +1,360 @@
+version: 2
+
+models:
+
+  #######################################################################
+  # Movie Statistics
+  #######################################################################
+
+  - name: int_movie_statistics
+    description: "Intermediate model containing aggregated movie rating statistics."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - statistics
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+
+      - name: rating_count
+        tests:
+          - not_null
+
+      - name: average_rating
+        tests:
+          - not_null
+
+      - name: min_rating
+        tests:
+          - not_null
+
+      - name: max_rating
+        tests:
+          - not_null
+
+      - name: latest_rating_date
+        tests:
+          - not_null
+
+      - name: popularity_score
+        tests:
+          - not_null
+
+  #######################################################################
+  # Movie Tags
+  #######################################################################
+
+  - name: int_movie_tags
+    description: "Intermediate model containing movie tag statistics."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - tags
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+
+      - name: total_tags
+        tests:
+          - not_null
+
+      - name: unique_tags
+        tests:
+          - not_null
+
+      - name: most_common_tag
+
+      - name: most_common_tag_frequency
+
+  #######################################################################
+  # Movie Links
+  #######################################################################
+
+  - name: int_movie_links
+    description: "Intermediate model containing external movie links."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - links
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+
+      - name: imdb_id
+
+      - name: tmdb_id
+
+      - name: imdb_url
+
+      - name: tmdb_url
+
+  #######################################################################
+  # User Activity
+  #######################################################################
+
+  - name: int_user_activity
+    description: "Intermediate model containing user activity statistics."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - users
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+
+      - name: total_ratings
+        tests:
+          - not_null
+
+      - name: average_rating_given
+        tests:
+          - not_null
+
+      - name: minimum_rating_given
+
+      - name: maximum_rating_given
+
+      - name: total_tags
+
+      - name: last_active
+
+      - name: active_days
+
+      - name: favorite_genre
+
+  #######################################################################
+  # Rating Distribution
+  #######################################################################
+
+  - name: int_rating_distribution
+    description: "Distribution of movie ratings."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - ratings
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: rating
+        tests:
+          - not_null
+
+      - name: rating_count
+        tests:
+          - not_null
+
+      - name: percentage
+
+      - name: cumulative_rating_count
+
+      - name: cumulative_percentage
+
+  #######################################################################
+  # Movie Popularity
+  #######################################################################
+
+  - name: int_movie_popularity
+    description: "Weighted popularity metrics for movies."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - popularity
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+
+      - name: rating_count
+        tests:
+          - not_null
+
+      - name: average_rating
+        tests:
+          - not_null
+
+      - name: popularity_score
+        tests:
+          - not_null
+
+      - name: weighted_rating
+        tests:
+          - not_null
+
+  #######################################################################
+  # Genre Statistics
+  #######################################################################
+
+  - name: int_genre_statistics
+    description: "Genre level movie statistics."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - genre
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: genres
+        tests:
+          - not_null
+
+      - name: total_movies
+        tests:
+          - not_null
+
+      - name: total_ratings
+        tests:
+          - not_null
+
+      - name: average_rating
+        tests:
+          - not_null
+
+      - name: minimum_rating
+        tests:
+          - not_null
+
+      - name: maximum_rating
+        tests:
+          - not_null
+
+  #######################################################################
+  # Genome Statistics
+  #######################################################################
+
+  - name: int_genome_statistics
+    description: "Genome tag statistics."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - genome
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: tag_id
+        tests:
+          - not_null
+
+      - name: total_movies
+        tests:
+          - not_null
+
+      - name: average_relevance
+        tests:
+          - not_null
+
+      - name: minimum_relevance
+        tests:
+          - not_null
+
+      - name: maximum_relevance
+        tests:
+          - not_null
+
+  #######################################################################
+  # Movie Engagement
+  #######################################################################
+
+  - name: int_movie_engagement
+    description: "Movie engagement KPI model."
+
+    config:
+      tags:
+        - intermediate
+        - analytics
+        - engagement
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        source_system: "MovieLens"
+
+    columns:
+      - name: movie_id
+        tests:
+          - not_null
+
+      - name: rating_count
+        tests:
+          - not_null
+
+      - name: average_rating
+        tests:
+          - not_null
+
+      - name: popularity_score
+        tests:
+          - not_null
+
+      - name: total_tags
+        tests:
+          - not_null
+
+      - name: unique_tags
+        tests:
+          - not_null
+
+      - name: engagement_score
+        tests:
+          - not_null

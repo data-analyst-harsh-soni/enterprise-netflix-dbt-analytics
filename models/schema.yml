@@ -1,101 +1,6 @@
 version: 2
 
 models:
-
-  #######################################################################
-  # DIMENSION MODELS
-  #######################################################################
-
-  - name: dim_movies
-    description: "Dimension table containing cleansed movie metadata."
-
-    config:
-      tags:
-        - dimension
-        - analytics
-        - movielens
-
-      meta:
-        owner: "Harsh Soni"
-        team: "Analytics Engineering"
-        source_system: "MovieLens"
-
-    columns:
-
-      - name: movie_id
-        description: "Unique Movie Identifier"
-        tests:
-          - not_null
-
-      - name: movie_title
-        description: "Movie Title"
-        tests:
-          - not_null
-
-      - name: genre_array
-        description: "Genres stored as an array."
-
-      - name: genres
-        description: "Original genre string."
-
-
-  #######################################################################
-  # DIM_USERS
-  #######################################################################
-
-  - name: dim_users
-    description: "Dimension table containing unique users."
-
-    config:
-      tags:
-        - dimension
-        - analytics
-        - movielens
-
-      meta:
-        owner: "Harsh Soni"
-        team: "Analytics Engineering"
-        source_system: "MovieLens"
-
-    columns:
-
-      - name: user_id
-        description: "Unique User Identifier"
-        tests:
-          - not_null
-
-
-  #######################################################################
-  # DIM_GENOME_TAGS
-  #######################################################################
-
-  - name: dim_genome_tags
-    description: "Dimension table for genome tags."
-
-    config:
-      tags:
-        - dimension
-        - analytics
-        - movielens
-
-      meta:
-        owner: "Harsh Soni"
-        team: "Analytics Engineering"
-        source_system: "MovieLens"
-
-    columns:
-
-      - name: tag_id
-        description: "Genome Tag Identifier"
-        tests:
-          - not_null
-
-      - name: tag_name
-        description: "Genome Tag Name"
-        tests:
-          - not_null
-
-
   #######################################################################
   # FACT_RATINGS
   #######################################################################
@@ -139,7 +44,6 @@ models:
         description: "Timestamp of Rating"
         tests:
           - not_null
-
 
   #######################################################################
   # FACT_GENOME_SCORES

@@ -16,7 +16,7 @@ scores AS (
 
 SELECT
     m.movie_id,
-    m.movie_title,
+    m.title,
     m.genres,
     t.tag_name,
     s.relevance_score

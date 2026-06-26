@@ -1,3 +1,4 @@
+
 version: 2
 
 sources:
@@ -6,7 +7,7 @@ sources:
 
     database: NETFLIX
     schema: RAW
-    loader: Snowflake COPY INTO
+    loader: "Snowflake COPY INTO"
 
     tables:
 
@@ -24,6 +25,7 @@ sources:
               - not_null
 
           - name: GENRES
+            description: "Movie genres"
 
       - name: RAW_RATINGS
         description: "Movie Ratings"
@@ -36,10 +38,9 @@ sources:
           - name: MOVIEID
             data_tests:
               - not_null
-
               - relationships:
                   arguments:
-                    to: source('netflix_raw','RAW_MOVIES')
+                    to: source('netflix_raw', 'RAW_MOVIES')
                     field: MOVIEID
 
           - name: RATING
@@ -89,3 +90,4 @@ sources:
           - name: TAGID
 
           - name: RELEVANCE
+

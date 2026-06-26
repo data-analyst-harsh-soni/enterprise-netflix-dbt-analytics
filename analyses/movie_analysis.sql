@@ -8,7 +8,7 @@ WITH ratings_summary AS (
   HAVING COUNT(*) > 100 -- Only movies with at least 100 ratings
 )
 SELECT
-  m.movie_title,
+  m.title,
   rs.average_rating,
   rs.total_ratings
 FROM ratings_summary rs
