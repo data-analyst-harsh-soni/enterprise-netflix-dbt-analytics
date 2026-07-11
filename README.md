@@ -594,7 +594,8 @@ where rating < 0.5 or rating > 5.0
 
 ```bash
 # Clone the repository
-git clone https://github.com/data-analyst-harsh-soni/netflix-analytics-engineering.git
+git clone https://github.com/data-analyst-harsh-soni/enterprise-netflix-dbt-analytics
+.git
 cd netflix-analytics-engineering
 
 # Create and activate a virtual environment
@@ -857,7 +858,7 @@ Analytics Engineer & Data Analyst specializing in SQL, Python, dbt, Snowflake, a
 ## 🔗 Connect With Me
 
 [![GitHub](https://img.shields.io/badge/GitHub-data--analyst--harsh--soni-181717?style=for-the-badge&logo=github)](https://github.com/data-analyst-harsh-soni)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)]([https://linkedin.com](https://in.linkedin.com/in/harsh-soni-data-analyst))
 
 <br/>
 
