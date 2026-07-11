@@ -1,0 +1,477 @@
+version: 2
+
+models:
+
+  #######################################################################
+  # Executive Dashboard Mart
+  #######################################################################
+
+  - name: mart_executive_dashboard
+    description: "Enterprise executive dashboard containing overall business KPIs."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - mart
+        - business
+        - executive
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        consumer: "Power BI"
+        refresh_frequency: "Daily"
+
+    columns:
+
+      - name: total_movies
+        description: "Total movies."
+        tests:
+          - not_null
+
+      - name: total_genres
+        description: "Distinct genres."
+
+      - name: release_years
+        description: "Distinct release years."
+
+      - name: total_users
+        description: "Total users."
+        tests:
+          - not_null
+
+      - name: total_ratings
+        description: "Total ratings."
+        tests:
+          - not_null
+
+      - name: average_rating
+        description: "Average movie rating."
+
+      - name: minimum_rating
+        description: "Minimum rating."
+
+      - name: maximum_rating
+        description: "Maximum rating."
+
+      - name: total_genome_tags
+        description: "Genome tag count."
+
+      - name: average_relevance_score
+        description: "Average genome relevance."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null
+
+  #######################################################################
+  # Movie Analytics Mart
+  #######################################################################
+
+  - name: mart_movie_analytics
+    description: "Business-ready movie analytics."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - mart
+        - business
+        - movie
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        consumer: "Power BI"
+        refresh_frequency: "Daily"
+
+    columns:
+
+      - name: movie_sk
+        description: "Movie surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_id
+        description: "Business movie id."
+        tests:
+          - unique
+          - not_null
+
+      - name: title
+        description: "Movie title."
+
+      - name: genres
+        description: "Movie genres."
+
+      - name: release_year
+        description: "Movie release year."
+
+      - name: total_ratings
+        description: "Total ratings."
+
+      - name: average_rating
+        description: "Average rating."
+
+      - name: minimum_rating
+        description: "Minimum rating."
+
+      - name: maximum_rating
+        description: "Maximum rating."
+
+      - name: last_rating_timestamp
+        description: "Last rating timestamp."
+
+      - name: total_genome_tags
+        description: "Genome tag count."
+
+      - name: average_relevance_score
+        description: "Average relevance score."
+
+      - name: rating_category
+        description: "Rating classification."
+
+      - name: popularity_category
+        description: "Popularity classification."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+
+      - name: source_system
+        description: "Source system."
+
+  #######################################################################
+  # User Analytics Mart
+  #######################################################################
+
+  - name: mart_user_analytics
+    description: "Business-ready user analytics."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - mart
+        - business
+        - user
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        consumer: "Power BI"
+        refresh_frequency: "Daily"
+
+    columns:
+
+      - name: user_sk
+        description: "User surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: user_id
+        description: "Business user id."
+        tests:
+          - unique
+          - not_null
+
+      - name: total_ratings
+        description: "Total ratings submitted."
+
+      - name: movies_rated
+        description: "Distinct movies rated."
+
+      - name: average_rating_given
+        description: "Average rating given."
+
+      - name: minimum_rating_given
+        description: "Minimum rating given."
+
+      - name: maximum_rating_given
+        description: "Maximum rating given."
+
+      - name: first_rating_date
+        description: "First rating timestamp."
+
+      - name: last_rating_date
+        description: "Latest rating timestamp."
+
+      - name: engagement_segment
+        description: "User engagement category."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null
+
+  #######################################################################
+  # Genre Analytics Mart
+  #######################################################################
+
+  - name: mart_genre_analytics
+    description: "Business-ready genre analytics."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - mart
+        - business
+        - genre
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        consumer: "Power BI"
+        refresh_frequency: "Daily"
+
+    columns:
+
+      - name: genres
+        description: "Movie genres."
+        tests:
+          - unique
+          - not_null
+
+      - name: total_movies
+        description: "Total movies in the genre."
+
+      - name: first_release_year
+        description: "Earliest release year."
+
+      - name: latest_release_year
+        description: "Latest release year."
+
+      - name: total_ratings
+        description: "Total ratings received."
+
+      - name: average_rating
+        description: "Average rating."
+
+      - name: minimum_rating
+        description: "Minimum rating."
+
+      - name: maximum_rating
+        description: "Maximum rating."
+
+      - name: total_genome_tags
+        description: "Total genome tags."
+
+      - name: average_relevance_score
+        description: "Average genome relevance score."
+
+      - name: genre_rating_category
+        description: "Genre quality classification."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null
+
+  #######################################################################
+  # Recommendation Mart
+  #######################################################################
+
+  - name: mart_recommendation
+    description: "Business-ready movie recommendation dataset."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - mart
+        - business
+        - recommendation
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        consumer: "Power BI"
+        refresh_frequency: "Daily"
+
+    columns:
+
+      - name: movie_sk
+        description: "Movie surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_id
+        description: "Business movie identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: title
+        description: "Movie title."
+
+      - name: genres
+        description: "Movie genres."
+
+      - name: release_year
+        description: "Movie release year."
+
+      - name: total_ratings
+        description: "Total ratings."
+
+      - name: average_rating
+        description: "Average rating."
+
+      - name: total_genome_tags
+        description: "Total genome tags."
+
+      - name: average_relevance_score
+        description: "Average genome relevance score."
+
+      - name: last_rating_timestamp
+        description: "Most recent rating timestamp."
+
+      - name: recommendation_score
+        description: "Calculated recommendation score."
+
+      - name: recommendation_category
+        description: "Recommendation classification."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null
+
+  #######################################################################
+  # Content Performance Mart
+  #######################################################################
+
+  - name: mart_content_performance
+    description: "Business-ready content performance analytics."
+
+    config:
+      contract:
+        enforced: false
+
+      tags:
+        - mart
+        - business
+        - content
+
+      meta:
+        owner: "Harsh Soni"
+        team: "Analytics Engineering"
+        consumer: "Power BI"
+        refresh_frequency: "Daily"
+
+    columns:
+
+      - name: movie_sk
+        description: "Movie surrogate key."
+        tests:
+          - unique
+          - not_null
+
+      - name: movie_id
+        description: "Business movie identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: title
+        description: "Movie title."
+
+      - name: genres
+        description: "Movie genres."
+
+      - name: release_year
+        description: "Movie release year."
+
+      - name: total_ratings
+        description: "Total ratings."
+
+      - name: average_rating
+        description: "Average movie rating."
+
+      - name: minimum_rating
+        description: "Minimum rating."
+
+      - name: maximum_rating
+        description: "Maximum rating."
+
+      - name: last_rating_timestamp
+        description: "Latest rating timestamp."
+
+      - name: total_genome_tags
+        description: "Genome tag count."
+
+      - name: average_relevance_score
+        description: "Average genome relevance."
+
+      - name: performance_category
+        description: "Performance classification."
+
+      - name: quality_category
+        description: "Quality classification."
+
+      - name: record_created_at
+        description: "Record creation timestamp."
+        tests:
+          - not_null
+
+      - name: record_updated_at
+        description: "Record refresh timestamp."
+        tests:
+          - not_null
+
+      - name: source_system
+        description: "Source system."
+        tests:
+          - not_null

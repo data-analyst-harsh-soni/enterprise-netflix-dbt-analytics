@@ -171,11 +171,6 @@ models:
           - unique
           - not_null
 
-      - name: tag_name
-        description: "Genome tag description."
-        tests:
-          - not_null
-
       - name: record_created_at
         description: "Record creation timestamp."
         tests:

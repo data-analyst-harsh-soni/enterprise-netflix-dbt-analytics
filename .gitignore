@@ -1,4 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
+# Virtual Environment
+.venv/
+venv/
+dbt_env/
+
+# dbt
 target/
 dbt_packages/
 logs/
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Snowflake
+*.pem
+
+# Environment
+.env

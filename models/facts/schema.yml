@@ -1,11 +1,6 @@
 version: 2
 
 models:
-
-  #######################################################################
-  # Enterprise Ratings Fact
-  #######################################################################
-
   - name: fct_ratings
     description: "Enterprise ratings fact table."
 
@@ -95,11 +90,6 @@ models:
         description: "Source system."
         tests:
           - not_null
-
-  #######################################################################
-  # Enterprise Genome Scores Fact
-  #######################################################################
-
   - name: fct_genome_scores
     description: "Enterprise genome relevance fact."
 
@@ -171,10 +161,6 @@ models:
         description: "Source system."
         tests:
           - not_null
-
-  #######################################################################
-  # Enterprise Movie Activity Fact
-  #######################################################################
 
   - name: fct_movie_activity
     description: "Enterprise movie activity fact."

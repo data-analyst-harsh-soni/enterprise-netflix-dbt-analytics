@@ -1,11 +1,6 @@
 version: 2
 
 models:
-
-  #######################################################################
-  # Movie Statistics
-  #######################################################################
-
   - name: int_movie_statistics
     description: "Intermediate model containing aggregated movie rating statistics."
 
@@ -49,10 +44,6 @@ models:
         tests:
           - not_null
 
-  #######################################################################
-  # Movie Tags
-  #######################################################################
-
   - name: int_movie_tags
     description: "Intermediate model containing movie tag statistics."
 
@@ -84,10 +75,6 @@ models:
 
       - name: most_common_tag_frequency
 
-  #######################################################################
-  # Movie Links
-  #######################################################################
-
   - name: int_movie_links
     description: "Intermediate model containing external movie links."
 
@@ -114,10 +101,6 @@ models:
       - name: imdb_url
 
       - name: tmdb_url
-
-  #######################################################################
-  # User Activity
-  #######################################################################
 
   - name: int_user_activity
     description: "Intermediate model containing user activity statistics."
@@ -158,10 +141,6 @@ models:
 
       - name: favorite_genre
 
-  #######################################################################
-  # Rating Distribution
-  #######################################################################
-
   - name: int_rating_distribution
     description: "Distribution of movie ratings."
 
@@ -190,10 +169,6 @@ models:
       - name: cumulative_rating_count
 
       - name: cumulative_percentage
-
-  #######################################################################
-  # Movie Popularity
-  #######################################################################
 
   - name: int_movie_popularity
     description: "Weighted popularity metrics for movies."
@@ -229,10 +204,6 @@ models:
       - name: weighted_rating
         tests:
           - not_null
-
-  #######################################################################
-  # Genre Statistics
-  #######################################################################
 
   - name: int_genre_statistics
     description: "Genre level movie statistics."
@@ -273,10 +244,6 @@ models:
         tests:
           - not_null
 
-  #######################################################################
-  # Genome Statistics
-  #######################################################################
-
   - name: int_genome_statistics
     description: "Genome tag statistics."
 
@@ -311,10 +278,6 @@ models:
       - name: maximum_relevance
         tests:
           - not_null
-
-  #######################################################################
-  # Movie Engagement
-  #######################################################################
 
   - name: int_movie_engagement
     description: "Movie engagement KPI model."
